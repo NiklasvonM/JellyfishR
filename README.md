@@ -15,6 +15,12 @@ String comparison:
 * Jaro-Winkler Similarity
 * Levenshtein Distance
 
+Phonetic encoding:
+
+* American Soundex
+* Metaphone
+* NYSIIS (New York State Identification and Intelligence System)
+
 ## Example Usage
 
 ```R

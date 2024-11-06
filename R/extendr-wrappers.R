@@ -25,5 +25,14 @@ jaro_winkler_similarity <- function(s1, s2) .Call(wrap__jaro_winkler_similarity,
 #' @export
 levenshtein_distance <- function(s1, s2) .Call(wrap__levenshtein_distance, s1, s2)
 
+#' @export
+metaphone <- function(s) .Call(wrap__metaphone, s)
+
+#' @export
+nysiis <- function(s) .Call(wrap__nysiis, s)
+
+#' @export
+soundex <- function(s) .Call(wrap__soundex, s)
+
 
 # nolint end
