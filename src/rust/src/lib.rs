@@ -94,7 +94,11 @@ macro_rules! vectorize_jaccard {
     ($fn_name:ident, $vec_fn_name:ident, $ret_type:ty, $convert_fn:expr) => {
         #[extendr]
         /// @export
-        fn $vec_fn_name(s1: Strings, s2: Strings, ngram_size: Option<usize>) -> Result<Vec<$ret_type>> {
+        fn $vec_fn_name(
+            s1: Strings,
+            s2: Strings,
+            ngram_size: Option<usize>,
+        ) -> Result<Vec<$ret_type>> {
             let (longer, shorter) = if s1.len() > s2.len() {
                 (s1, s2)
             } else {
