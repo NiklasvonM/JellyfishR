@@ -25,16 +25,19 @@ macro_rules! vectorize_arity_one {
         #[extendr]
         /// @export
         fn $vec_fn_name(s: Strings) -> Result<Vec<$ret_type>> {
-            let mut result: Vec<$ret_type> = Vec::new();
             let s: Vec<&str> = s.iter().map(|rstr| rstr.as_str()).collect();
 
-            for elem in s.iter() {
-                result.push(if elem.is_na() {
-                    <$ret_type>::na()
-                } else {
-                    $convert_fn($fn_name(elem))
-                });
-            }
+            let result: Vec<$ret_type> = s
+                .iter()
+                .map(|elem| {
+                    if elem.is_na() {
+                        <$ret_type>::na()
+                    } else {
+                        $convert_fn($fn_name(elem))
+                    }
+                })
+                .collect();
+
             Ok(result)
         }
     };
