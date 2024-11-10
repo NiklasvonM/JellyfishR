@@ -1,7 +1,7 @@
 use std::borrow::Cow;
 use std::collections::HashSet;
 
-pub fn jaccard_similarity_(s1: &str, s2: &str, ngram_size: Option<usize>) -> f64 {
+pub fn jaccard_distance_(s1: &str, s2: &str, ngram_size: Option<usize>) -> f64 {
     // 1. Tokenize into ngrams
     let grams1: HashSet<String> = get_ngrams(s1, ngram_size)
         .into_iter()
@@ -18,9 +18,9 @@ pub fn jaccard_similarity_(s1: &str, s2: &str, ngram_size: Option<usize>) -> f64
 
     // 3. Calculate Jaccard index
     if union_size == 0 {
-        0.0
+        1.0
     } else {
-        intersection_size as f64 / union_size as f64
+        1.0 - intersection_size as f64 / union_size as f64
     }
 }
 

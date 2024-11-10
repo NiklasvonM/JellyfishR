@@ -2,8 +2,9 @@
 
 export(damerau_levenshtein_distance)
 export(hamming_distance)
-export(jaro_similarity)
-export(jaro_winkler_similarity)
+export(jaccard_distance)
+export(jaro_distance)
+export(jaro_winkler_distance)
 export(levenshtein_distance)
 export(metaphone)
 export(nysiis)

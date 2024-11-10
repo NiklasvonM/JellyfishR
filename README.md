@@ -8,12 +8,12 @@ Source: [https://github.com/NiklasvonM/jellyfishr](https://github.com/NiklasvonM
 
 String comparison:
 
-* Damerau-Levenshtein Distance
-* Hamming Distance
-* Jaccard Index
-* Jaro Similarity
-* Jaro-Winkler Similarity
-* Levenshtein Distance
+* Damerau-Levenshtein distance
+* Hamming distance
+* Jaccard distance
+* Jaro distance
+* Jaro-Winkler distance
+* Levenshtein distance
 
 Phonetic encoding:
 
@@ -27,12 +27,14 @@ Phonetic encoding:
 >>> library(jellyfishr)
 >>> levenshtein_distance(c('jellyfishr', 'jellyfishr'), c('jellyfisher', 'jollyfisher'))
 [1] 1 2
->>> jaro_similarity('jellyfishr', 'jellyfisher')
-[1] 0.969697
->>> jaro_winkler_similarity('jellyfishr', 'jellyfisher')
-[1] 0.9818182
+>>> jaro_distance('jellyfishr', 'jellyfisher')
+[1] 0.03030303
+>>> jaro_winkler_distance('jellyfishr', 'jellyfisher')
+[1] 0.01818182
 >>> damerau_levenshtein_distance('fisherman', 'ifsherman')
 [1] 1
+>>> jaccard_distance('John Smith', c('John Jacob Smith', 'Smith John'), ngram_size = NULL)
+[1] 0.3333333 0.0000000
 ```
 
 ## Build

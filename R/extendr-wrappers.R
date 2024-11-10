@@ -17,10 +17,13 @@ damerau_levenshtein_distance <- function(s1, s2) .Call(wrap__damerau_levenshtein
 hamming_distance <- function(s1, s2) .Call(wrap__hamming_distance, s1, s2)
 
 #' @export
-jaro_similarity <- function(s1, s2) .Call(wrap__jaro_similarity, s1, s2)
+jaccard_distance <- function(s1, s2, ngram_size) .Call(wrap__jaccard_distance, s1, s2, ngram_size)
 
 #' @export
-jaro_winkler_similarity <- function(s1, s2) .Call(wrap__jaro_winkler_similarity, s1, s2)
+jaro_distance <- function(s1, s2) .Call(wrap__jaro_distance, s1, s2)
+
+#' @export
+jaro_winkler_distance <- function(s1, s2) .Call(wrap__jaro_winkler_distance, s1, s2)
 
 #' @export
 levenshtein_distance <- function(s1, s2) .Call(wrap__levenshtein_distance, s1, s2)
