@@ -15,6 +15,7 @@ use crate::nysiis::nysiis_;
 use crate::soundex::soundex_;
 
 use extendr_api::prelude::*;
+use rayon::prelude::*;
 
 // Macro to turn 1-ary scalar functions into vectorized ones.
 macro_rules! vectorize_arity_one {
@@ -43,7 +44,6 @@ macro_rules! vectorize_arity_two {
         #[extendr]
         /// @export
         fn $vec_fn_name(s1: Strings, s2: Strings) -> Result<Vec<$ret_type>> {
-            let mut result: Vec<$ret_type> = Vec::new();
             let (longer, shorter) = if s1.len() > s2.len() {
                 (s1, s2)
             } else {
@@ -61,15 +61,28 @@ macro_rules! vectorize_arity_two {
             }
 
             let shorter_vec: Vec<&str> = shorter.iter().map(|rstr| rstr.as_str()).collect();
-            let shorter_repeated = shorter_vec.iter().cycle().take(longer.len());
+            let shorter_repeated: Vec<&str> = shorter_vec
+                .iter()
+                .cycle()
+                .take(longer.len())
+                .map(|s| *s)
+                .collect();
+            let longer_vec: Vec<&str> = longer.iter().map(|rstr| rstr.as_str()).collect();
 
-            for (elem1, elem2) in longer.iter().zip(shorter_repeated) {
-                result.push(if elem1.is_na() || elem2.is_na() {
-                    <$ret_type>::na()
-                } else {
-                    $convert_fn($fn_name(&elem1.as_str(), &*elem2))
-                });
-            }
+            let result: Vec<$ret_type> = longer_vec
+                .iter()
+                .zip(shorter_repeated.iter())
+                .collect::<Vec<_>>()
+                .into_par_iter()
+                .map(|(elem1, elem2)| {
+                    if elem1.is_na() || elem2.is_na() {
+                        <$ret_type>::na()
+                    } else {
+                        $convert_fn($fn_name(&elem1, &elem2))
+                    }
+                })
+                .collect();
+
             Ok(result)
         }
     };
