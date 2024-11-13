@@ -37,3 +37,14 @@ fn get_ngrams(s: &str, n: Option<usize>) -> Vec<Cow<'_, str>> {
         s.split_whitespace().map(Cow::from).collect()
     }
 }
+
+#[cfg(test)]
+mod test {
+    use super::*; // Import the Jaccard functions
+    use crate::testutils::testutils; // Import the test utils
+
+    #[test]
+    fn test_jaccard_distance() {
+        testutils::test_distance_func_three_args("testdata/jaccard.csv", jaccard_distance_);
+    }
+}

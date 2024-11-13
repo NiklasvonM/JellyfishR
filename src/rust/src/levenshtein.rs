@@ -118,3 +118,22 @@ pub fn damerau_levenshtein_distance_(s1: &str, s2: &str) -> usize {
 
     vec_damerau_levenshtein_distance(&us1, &us2)
 }
+
+
+#[cfg(test)]
+mod test {
+    use super::*;
+    use crate::testutils::testutils;
+    #[test]
+    fn test_levenshtein() {
+        testutils::test_distance_func("testdata/levenshtein.csv", levenshtein_distance_);
+    }
+
+    #[test]
+    fn test_damerau_levenshtein() {
+        testutils::test_distance_func(
+            "testdata/damerau_levenshtein.csv",
+            damerau_levenshtein_distance_,
+        );
+    }
+}

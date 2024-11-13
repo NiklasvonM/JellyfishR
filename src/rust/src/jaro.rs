@@ -142,3 +142,26 @@ fn jaro_winkler_distance_longtol(s1: &str, s2: &str) -> f64 {
     let us2 = UnicodeSegmentation::graphemes(s2, true).collect::<FastVec<&str>>();
     vec_jaro_winkler_distance_longtol(&us1, &us2)
 }
+
+#[cfg(test)]
+mod test {
+    use super::*;
+    use crate::testutils::testutils;
+    #[test]
+    fn test_jaro() {
+        testutils::test_distance_func_two_args("testdata/jaro_distance.csv", jaro_distance_);
+    }
+
+    #[test]
+    fn test_jaro_winkler() {
+        testutils::test_distance_func_two_args("testdata/jaro_winkler.csv", jaro_winkler_distance_);
+    }
+    /*
+    #[test]
+    fn test_jaro_winkler_longtol() {
+        testutils::test_distance_func_two_args(
+            "testdata/jaro_winkler_longtol.csv",
+            jaro_winkler_distance_longtol_,
+        );
+    }*/
+}

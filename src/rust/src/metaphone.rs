@@ -175,3 +175,13 @@ pub fn metaphone_(s: &str) -> String {
 
     str_key
 }
+
+#[cfg(test)]
+mod test {
+    use super::*;
+    use crate::testutils::testutils;
+    #[test]
+    fn test_metaphone() {
+        testutils::test_str_func("testdata/metaphone.csv", metaphone_);
+    }
+}
