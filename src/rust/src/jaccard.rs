@@ -16,7 +16,7 @@ pub fn jaccard_distance_(s1: &str, s2: &str, ngram_size: Option<usize>) -> f64 {
     let intersection_size: usize = grams1.iter().filter(|gram| grams2.contains(*gram)).count();
     let union_size: usize = grams1.len() + grams2.len() - intersection_size;
 
-    // 3. Calculate Jaccard index
+    // 3. Calculate Jaccard metric
     if union_size == 0 {
         1.0
     } else {
@@ -35,5 +35,16 @@ fn get_ngrams(s: &str, n: Option<usize>) -> Vec<Cow<'_, str>> {
     } else {
         // Word-level "n-grams" (i.e., words)
         s.split_whitespace().map(Cow::from).collect()
+    }
+}
+
+#[cfg(test)]
+mod test {
+    use super::*; // Import the Jaccard functions
+    use crate::testutils::testutils; // Import the test utils
+
+    #[test]
+    fn test_jaccard_distance() {
+        testutils::test_distance_func_three_args("testdata/jaccard.csv", jaccard_distance_);
     }
 }

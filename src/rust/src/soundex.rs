@@ -49,3 +49,13 @@ pub fn soundex_(s: &str) -> String {
     }
     str_key
 }
+
+#[cfg(test)]
+mod test {
+    use super::*;
+    use crate::testutils::testutils;
+    #[test]
+    fn test_soundex() {
+        testutils::test_str_func("testdata/soundex.csv", soundex_);
+    }
+}

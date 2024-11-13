@@ -122,3 +122,13 @@ pub fn nysiis_(s: &str) -> String {
 
     str_key
 }
+
+#[cfg(test)]
+mod test {
+    use super::*;
+    use crate::testutils::testutils;
+    #[test]
+    fn test_nysiis() {
+        testutils::test_str_func("testdata/nysiis.csv", nysiis_);
+    }
+}

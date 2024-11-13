@@ -6,6 +6,7 @@ mod levenshtein;
 mod metaphone;
 mod nysiis;
 mod soundex;
+mod testutils;
 
 //use crate::hamming::hamming_distance;
 use crate::hamming::hamming_distance_;
