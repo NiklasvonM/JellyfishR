@@ -1,17 +1,17 @@
-dixon,dicksonx,0.813
-martha,marhta,0.961
-dwayne,duane,0.84
-William,Williams,0.975
-,foo,0
-a,a,1
-abc,xyz,0
-aaaa,aaaaa,0.96
-orangutan-kumquat,orangutan kumquat,0.976
-jaz,jal,0.822
-@,@@,0.85
-0,0@,0.85
-a,ab,0.85
-012345,0123456,0.971
-012abc,012abcd,0.971
-012abc,013abcd,0.879
-a1bc,a1be,0.883
+dixon,dicksonx,0.187
+martha,marhta,0.039
+dwayne,duane,0.16
+William,Williams,0.025
+,foo,1.0
+a,a,0.0
+abc,xyz,1.0
+aaaa,aaaaa,0.04
+orangutan-kumquat,orangutan kumquat,0.024
+jaz,jal,0.178
+@,@@,0.15
+0,0@,0.15
+a,ab,0.15
+012345,0123456,0.029
+012abc,012abcd,0.029
+012abc,013abcd,0.121
+a1bc,a1be,0.117
