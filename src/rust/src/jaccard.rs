@@ -16,7 +16,7 @@ pub fn jaccard_distance_(s1: &str, s2: &str, ngram_size: Option<usize>) -> f64 {
     let intersection_size: usize = grams1.iter().filter(|gram| grams2.contains(*gram)).count();
     let union_size: usize = grams1.len() + grams2.len() - intersection_size;
 
-    // 3. Calculate Jaccard index
+    // 3. Calculate Jaccard distance
     if union_size == 0 {
         1.0
     } else {
